@@ -1,0 +1,5 @@
+preset/
+weights/
+outputs/
+*.py[cod]
+**/__pycache__/

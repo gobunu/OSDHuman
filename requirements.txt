@@ -1,0 +1,17 @@
+torch==2.0.1
+torchvision
+diffusers==0.25.0
+transformers==4.28.1
+peft==0.9.0
+xformers==0.0.20
+einops==0.7.0
+Pillow==9.5.0
+PyYAML==6.0
+numpy<2.0.0
+scipy
+tqdm
+timm
+fairscale
+loralib
+huggingface_hub==0.25.2
+safetensors

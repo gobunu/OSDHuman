@@ -3,17 +3,16 @@
   One-Step Diffusion Model and A New Benchmark
 </h1>
 
-
 <p align="center">
-🚩 <strong>Accepted by ICML2025</strong>
+🚩 <strong>Accepted by ICML 2025</strong>
 </p>
 
 <p align="center">
-<a href="https://github.com/gobunu">Jue Gong</a>, 
-<a href="https://github.com/jkwang28">Jingkai Wang</a>, 
-<a href="https://zhengchen1999.github.io/">Zheng Chen</a>, 
-Xing Liu, Hong Gu, 
-<a href="http://yulunzhang.com/">Yulun Zhang</a>, 
+<a href="https://github.com/gobunu">Jue Gong</a>,
+<a href="https://github.com/jkwang28">Jingkai Wang</a>,
+<a href="https://zhengchen1999.github.io/">Zheng Chen</a>,
+Xing Liu, Hong Gu,
+<a href="http://yulunzhang.com/">Yulun Zhang</a>,
 <a href="https://scholar.google.com/citations?user=yDEavdMAAAAJ">Xiaokang Yang</a>
 </p>
 
@@ -39,104 +38,157 @@ Xing Liu, Hong Gu,
   </a>
 </p>
 
-
 #### 🔥🔥🔥 News
 
-- **2025-02-05:** This repo is released.
-- **2025-05-01**: 🎉 Congratulations! OSDHuman has been accepted to **ICML 2025**.
-- **2025-05-04**: 🧪 Released the test and validation sets proposed in the paper.
+- **2025-02-05:** The OSDHuman repository was released.
+- **2025-05-01:** OSDHuman was accepted to **ICML 2025**.
+- **2025-05-04:** Released the PERSONA test and validation sets.
+- **2026-04-18:** Released the public inference code and inference instructions.
+
 ---
 
-> **Abstract:** Human body restoration, as a specific application of image restoration, is widely applied in practice and plays a vital role across diverse fields. However, thorough research remains difficult, particularly due to the lack of benchmark datasets. In this study, we propose a high-quality dataset automated cropping and filtering (HQ-ACF) pipeline. This pipeline leverages existing object detection datasets and other unlabeled images to automatically crop and filter high-quality human images. Using this pipeline, we constructed a person-based restoration with sophisticated objects and natural activities (PERSONA) dataset, which includes training, validation, and test sets. The dataset significantly surpasses other human-related datasets in both quality and content richness. Finally, we propose OSDHuman, a novel one-step diffusion model for human body restoration. Specifically, we propose a high-fidelity image embedder (HFIE) as the prompt generator to better guide the model with low-quality human image information, effectively avoiding misleading prompts. Experimental results show that OSDHuman outperforms existing methods in both visual quality and quantitative metrics. 
+> **Abstract:** Human body restoration, as a specific application of image restoration, is widely applied in practice and plays a vital role across diverse fields. However, thorough research remains difficult, particularly due to the lack of benchmark datasets. In this study, we propose a high-quality dataset automated cropping and filtering (HQ-ACF) pipeline. This pipeline leverages existing object detection datasets and other unlabeled images to automatically crop and filter high-quality human images. Using this pipeline, we constructed a person-based restoration with sophisticated objects and natural activities (PERSONA) dataset, which includes training, validation, and test sets. The dataset significantly surpasses other human-related datasets in both quality and content richness. Finally, we propose OSDHuman, a novel one-step diffusion model for human body restoration. Specifically, we propose a high-fidelity image embedder (HFIE) as the prompt generator to better guide the model with low-quality human image information, effectively avoiding misleading prompts. Experimental results show that OSDHuman outperforms existing methods in both visual quality and quantitative metrics.
 
 ![](images/OSDHuman_overall.png)
 
 ---
 
-[<img src="images/test-1.png" height="200"/>](https://imgsli.com/MzQ1ODk0) [<img src="images/test-2.png" height="200"/>](https://imgsli.com/MzQ1ODky)[<img src="images/Val-1.png" height="200"/>](https://imgsli.com/MzQ1ODk3) [<img src="images/Val-2.png" height="200"/>](https://imgsli.com/MzQ1ODk4)
+[<img src="images/test-1.png" height="200"/>](https://imgsli.com/MzQ1ODk0)
+[<img src="images/test-2.png" height="200"/>](https://imgsli.com/MzQ1ODky)
+[<img src="images/Val-1.png" height="200"/>](https://imgsli.com/MzQ1ODk3)
+[<img src="images/Val-2.png" height="200"/>](https://imgsli.com/MzQ1ODk4)
 
 ---
 
 ## ⚒️ TODO
 
-* [ ] Release code and pretrained models
-* [ ] Release PERSONA dataset
+* [x] Release inference code
+* [x] Release PERSONA test and validation sets
+* [ ] Release training code
+* [ ] Release PERSONA training set
 
 ## 🔗 Contents
 
-- [ ] PERSONA Training Set
-- [x] [PERSONA Test and Validation Set](#Test_Validation_Set)
-- [ ] Models
-- [ ] Testing
-- [ ] Training
-- [x] [Results](#Results)
-- [x] [Citation](#Citation)
-- [ ] [Acknowledgements](#Acknowledgements)
+- [x] [Inference](#inference)
+- [x] [PERSONA Test and Validation Set](#test_validation_set)
+- [x] [Results](#results)
+- [x] [Citation](#citation)
+- [ ] [Acknowledgements](#acknowledgements)
 
-## <a name="Test_Validation_Set"></a>🎭 PERSONA Test and Validation Set
+## <a name="inference"></a>🚀 Inference
 
-We provide three sets for evaluation, including both high- and low-quality validation images, and a real-world test set.
+This repository provides the public OSDHuman inference code. The entry point is [`run_inference.py`](run_inference.py), and sample inputs are included under [`test_set/`](test_set).
 
-| Dataset           | Description                             | Download Link |
-|------------------|-----------------------------------------|---------------|
-| PERSONA-Val HQ   | High-quality validation set             | [Google Drive](https://drive.google.com/file/d/1JaUzyDBJHytl3MfFBdcGAaO7uYDfP3vS/view?usp=drive_link) |
-| PERSONA-Val LQ   | Low-quality (degraded) validation set   | [Google Drive](https://drive.google.com/file/d/1qzJETavxMFxUDyimYxg4Ob5GmAAHmuMG/view?usp=drive_link) |
-| PERSONA-Test     | Real-world test set                     | [Google Drive](https://drive.google.com/file/d/1n_rywHB2apB9kWgZSRdnzMxQsJKWIEMR/view?usp=drive_link) |
+### Environment Installation
+
+```bash
+conda create -n osdhuman python=3.10 -y
+conda activate osdhuman
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+### Prepare Checkpoints
+
+Create local runtime folders if needed:
+
+```bash
+mkdir -p weights preset outputs
+```
+
+Place the following OSDHuman checkpoints under `weights/`:
+
+- `weights/model.pkl`
+- `weights/model_embedding_change.pkl`
+
+Download source:
+
+- OneDrive folder: <https://sjtueducn-my.sharepoint.com/:f:/g/personal/jingkaiwang_sjtu_edu_cn/Elsf13zJ11JPo1c7hHd2f04Bqh6-qLUdUYZICg0PyZoH2Q?e=RtVs0D>
+
+Place the following external base models locally:
+
+- `preset/stable-diffusion-2-1-base`
+  Source: <https://huggingface.co/stabilityai/stable-diffusion-2-1-base>
+- `preset/ram_swin_large_14m.pth`
+  Source: <https://huggingface.co/spaces/xinyu1205/recognize-anything/blob/main/ram_swin_large_14m.pth>
+
+### Quick Start
+
+Run inference on the bundled sample set:
+
+```bash
+python run_inference.py \
+  -i test_set \
+  -o outputs \
+  --osediff_path weights/model.pkl \
+  --pretrained_model_name_or_path preset/stable-diffusion-2-1-base \
+  --ram_path preset/ram_swin_large_14m.pth \
+  --ram_img_only
+```
+
+`run_inference.py` accepts either a single image path or a directory and writes restored images into `outputs/` by default.
+
+## <a name="test_validation_set"></a>🎭 PERSONA Test and Validation Set
+
+We provide three sets for evaluation, including both high-quality and degraded validation images and a real-world test set.
+
+| Dataset | Description | Download Link |
+|---|---|---|
+| PERSONA-Val HQ | High-quality validation set | [Google Drive](https://drive.google.com/file/d/1JaUzyDBJHytl3MfFBdcGAaO7uYDfP3vS/view?usp=drive_link) |
+| PERSONA-Val LQ | Low-quality validation set | [Google Drive](https://drive.google.com/file/d/1qzJETavxMFxUDyimYxg4Ob5GmAAHmuMG/view?usp=drive_link) |
+| PERSONA-Test | Real-world test set | [Google Drive](https://drive.google.com/file/d/1n_rywHB2apB9kWgZSRdnzMxQsJKWIEMR/view?usp=drive_link) |
 
 ## <a name="results"></a>🔎 Results
 
-The model **OSDHuman** achieved state-of-the-art performance on both the datasets **PERSONA-Val** and **PERSONA-Test**. Detailed results can be found in the paper.
+The model **OSDHuman** achieved state-of-the-art performance on both **PERSONA-Val** and **PERSONA-Test**. Detailed comparisons are available in the paper.
 
 <details>
-<summary>&ensp;Quantitative Comparisons (click to expand) </summary>
-<li> Results in Table 2 on synthetic PERSONA-Val and real-world PERSONA-Test datasets from the main paper. 
+<summary>&ensp;Quantitative Comparisons (click to expand)</summary>
+<li>Results in Table 2 on synthetic PERSONA-Val and real-world PERSONA-Test datasets from the main paper.</li>
 <p align="center">
-<img src="images/table2-main.png" >
+<img src="images/table2-main.png">
 </p>
-</li>
 </details>
+
 <details open>
-<summary>&ensp;Visual Comparisons (click to expand) </summary>
-<li> Results in Figure 8 on real-world PERSONA-Test dataset from the main paper.
+<summary>&ensp;Visual Comparisons (click to expand)</summary>
+<li>Results in Figure 8 on the real-world PERSONA-Test dataset from the main paper.</li>
 <p align="center">
-<img src="images/figure8-main.png" >
+<img src="images/figure8-main.png">
 </p>
-</li>
-<li> Results in Figure 9 on synthetic PERSONA-Val dataset from the main paper.
+<li>Results in Figure 9 on the synthetic PERSONA-Val dataset from the main paper.</li>
 <p align="center">
-<img src="images/figure9-main.png" >
+<img src="images/figure9-main.png">
 </p>
-</li>
-</details>
-<details>
-<summary style="margin-left: 2rem;">&ensp;More Comparisons on real-world PERSONA-Test dataset... </summary>
-<li style="margin-left: 2rem;"> Results in Figure 3, 4 from supplemental material.
-<p align="center">
-<img src="images/figure3-supp.png" >
-</p>
-<p align="center">
-<img src="images/figure4-supp.png" >
-</p>
-</li>
-</details>
-<details>
-<summary style="margin-left: 2rem;">&ensp;More Comparisons on synthetic PERSONA-Val dataset... </summary>
-<li style="margin-left: 2rem;"> Results in Figure 5, 6 from supplemental material.
-<p align="center">
-<img src="images/figure5-supp.png" >
-</p>
-<p align="center">
-<img src="images/figure6-supp.png" >
-</p>
-</li>
 </details>
 
+<details>
+<summary style="margin-left: 2rem;">&ensp;More Comparisons on real-world PERSONA-Test dataset...</summary>
+<li style="margin-left: 2rem;">Results in Figures 3 and 4 from the supplementary material.</li>
+<p align="center">
+<img src="images/figure3-supp.png">
+</p>
+<p align="center">
+<img src="images/figure4-supp.png">
+</p>
+</details>
+
+<details>
+<summary style="margin-left: 2rem;">&ensp;More Comparisons on synthetic PERSONA-Val dataset...</summary>
+<li style="margin-left: 2rem;">Results in Figures 5 and 6 from the supplementary material.</li>
+<p align="center">
+<img src="images/figure5-supp.png">
+</p>
+<p align="center">
+<img src="images/figure6-supp.png">
+</p>
+</details>
 
 ## <a name="citation"></a>📎 Citation
 
-If you find the code helpful in your research or work, please cite the following paper(s).
+If you find the code helpful in your research or work, please cite:
 
-```
+```bibtex
 @inproceedings{gong2025osdhuman,
     title={Human Body Restoration with One-Step Diffusion Model and A New Benchmark},
     author={Gong, Jue and Wang, Jingkai and Chen, Zheng and Liu, Xing and Gu, Hong and Zhang, Yulun and Yang, Xiaokang},
@@ -147,6 +199,4 @@ If you find the code helpful in your research or work, please cite the following
 
 ## <a name="acknowledgements"></a>💡 Acknowledgements
 
-[TBD]
-
-<!-- ![Visitor Count](https://profile-counter.glitch.me/gobunu/count.svg) -->
+[OSEDiff](https://github.com/cswry/OSEDiff)
