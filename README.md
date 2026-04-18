@@ -103,7 +103,7 @@ Place the following OSDHuman checkpoints under `weights/`:
 
 Download source:
 
-- OneDrive folder: <https://sjtueducn-my.sharepoint.com/:f:/g/personal/jingkaiwang_sjtu_edu_cn/Elsf13zJ11JPo1c7hHd2f04Bqh6-qLUdUYZICg0PyZoH2Q?e=RtVs0D>
+- Google Drive folder: <https://drive.google.com/drive/folders/1sNoSNcJC7cdf0RR5dK87PVTEupjOZ-3B?usp=drive_link>
 
 Place the following external base models locally:
 
